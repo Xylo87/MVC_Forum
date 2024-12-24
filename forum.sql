@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   PRIMARY KEY (`id_categorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_theo.categorie : ~3 rows (environ)
+-- Listage des données de la table forum_theo.categorie : ~0 rows (environ)
 DELETE FROM `categorie`;
 INSERT INTO `categorie` (`id_categorie`, `nom`) VALUES
 	(1, 'Discussions Générales'),
@@ -37,7 +37,7 @@ INSERT INTO `categorie` (`id_categorie`, `nom`) VALUES
 CREATE TABLE IF NOT EXISTS `message` (
   `id_message` int NOT NULL,
   `texte` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `dateMes` datetime NOT NULL,
+  `dateMes` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `utilisateur_id` int DEFAULT NULL,
   `sujet_id` int DEFAULT NULL,
   PRIMARY KEY (`id_message`),
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   CONSTRAINT `FK_message_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_theo.message : ~30 rows (environ)
+-- Listage des données de la table forum_theo.message : ~0 rows (environ)
 DELETE FROM `message`;
 INSERT INTO `message` (`id_message`, `texte`, `dateMes`, `utilisateur_id`, `sujet_id`) VALUES
 	(1, 'La Neo Geo AES reste pour moi la plus belle console jamais créée. Son design est intemporel. La qualité des matériaux est exceptionnelle. Les manettes sont parfaites. Je ne m\'en lasserai jamais.', '2023-12-24 14:30:00', 1, 1),
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `sujet` (
   `id_sujet` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `lock` tinyint(1) NOT NULL DEFAULT '0',
-  `dateSuj` datetime NOT NULL,
+  `dateSuj` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `categorie_id` int DEFAULT NULL,
   `utilisateur_id` int DEFAULT NULL,
   PRIMARY KEY (`id_sujet`),
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `sujet` (
   CONSTRAINT `FK_sujet_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_theo.sujet : ~10 rows (environ)
+-- Listage des données de la table forum_theo.sujet : ~0 rows (environ)
 DELETE FROM `sujet`;
 INSERT INTO `sujet` (`id_sujet`, `titre`, `lock`, `dateSuj`, `categorie_id`, `utilisateur_id`) VALUES
 	(1, 'La plus belle console rétro ?', 1, '2023-12-24 14:30:00', 1, 1),
@@ -117,11 +117,11 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `mail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `dateCrea` datetime NOT NULL,
+  `dateCrea` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_theo.utilisateur : ~10 rows (environ)
+-- Listage des données de la table forum_theo.utilisateur : ~0 rows (environ)
 DELETE FROM `utilisateur`;
 INSERT INTO `utilisateur` (`id_utilisateur`, `pseudo`, `password`, `role`, `mail`, `dateCrea`) VALUES
 	(1, 'RetroKing88', 'Rk88#2023!', 'Administrateur', 'retroking88@gmail.com', '2023-01-12 00:00:00'),
