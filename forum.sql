@@ -16,8 +16,8 @@
 
 
 -- Listage de la structure de la base pour forum_theo
-CREATE DATABASE IF NOT EXISTS `forum_theo` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `forum_theo`;
+CREATE DATABASE IF NOT EXISTS `forum` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `forum`;
 
 -- Listage de la structure de table forum_theo. categorie
 CREATE TABLE IF NOT EXISTS `categorie` (
