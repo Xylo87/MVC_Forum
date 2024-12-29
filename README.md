@@ -1,4 +1,4 @@
-# ⚡💬 Projet d'application web type Forum de discussions thématiques
+# ⚡💬 Projet d'application web type Forum de discussions thématiques (en cours...)
 
 ## 1. Description 
 Ce projet est un exercice pratique de programmation web utilisant l'architecture **Modèle/Vue/Contrôleur**, **PHP** et un **Framework** dédié.
