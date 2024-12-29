@@ -3,7 +3,7 @@
 ## 1. Description 
 Ce projet est un exercice pratique de programmation web utilisant l'architecture **Modèle/Vue/Contrôleur**, **PHP** et un **Framework** dédié.
 Il permet l'affichage de sujets de discussions thématiques (jeux vidéo rétro) répartis en catégories et de messages d'utilisateurs.
-Les informations affichées sont appelées depuis une base de données **MySQL** grâce à l'architecure **MVC**.
+Les informations affichées sont appelées depuis une base de données **MySQL** grâce à l'architecture **MVC**.
 L'application inclus un système d'authentification de connexion.
 
 ## 2. Fonctionnalités
