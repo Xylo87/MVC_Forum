@@ -4,15 +4,15 @@ namespace Controller;
 use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
-use Model\Managers\CategoryManager;
-use Model\Managers\TopicManager;
+use Model\Managers\CategorieManager;
+use Model\Managers\SujetManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
     public function index() {
         
         // créer une nouvelle instance de CategoryManager
-        $categoryManager = new CategoryManager();
+        $categoryManager = new CategorieManager();
         // récupérer la liste de toutes les catégories grâce à la méthode findAll de Manager.php (triés par nom)
         $categories = $categoryManager->findAll(["name", "DESC"]);
 
@@ -28,8 +28,8 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     public function listTopicsByCategory($id) {
 
-        $topicManager = new TopicManager();
-        $categoryManager = new CategoryManager();
+        $topicManager = new SujetManager();
+        $categoryManager = new CategorieManager();
         $category = $categoryManager->findOneById($id);
         $topics = $topicManager->findTopicsByCategory($id);
 

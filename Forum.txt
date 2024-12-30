@@ -1,0 +1,49 @@
+Prochain exercice FORUM
+Voici une explication détaillée de l'architecture du dossier App dans le framework ELAN en complément de la documentation donnée ci-dessus :
+Architecture MVC (Modèle-Vue-Contrôleur) 
+Le dossier App représente le cœur de l'application et implémente une architecture MVC :
+Composants principaux : 
+a) AbstractController.php
+Une classe abstraite qui sert de base pour tous les contrôleurs
+Fournit des méthodes communes comme :
+redirectTo() : pour la redirection
+restrictTo() : pour la gestion des permissions
+index() : méthode par défaut
+Gère le chargement automatique des classes
+Évite d'avoir à faire des require/include manuels
+Suit la convention PSR-4 pour l'autoloading
+Gère l'accès aux données
+Contient les méthodes de connexion à la base de données
+Implémente les opérations CRUD (Create, Read, Update, Delete)
+Classe de base pour les entités
+Représente la structure des objets métier
+Définit les propriétés et méthodes communes à toutes les entités
+Gère la logique métier
+Fait le lien entre les contrôleurs et la couche d'accès aux données
+Contient les règles métier spécifiques
+Gère les sessions utilisateur
+Stocke les informations de l'utilisateur connecté
+Gère l'authentification et les permissions
+Fonctionnement :
+Les requêtes arrivent sur index.php
+Le routeur dirige vers le bon contrôleur
+Le contrôleur utilise les managers pour traiter la logique métier
+Les managers utilisent le DAO pour accéder aux données
+Les données sont encapsulées dans des entités
+Bonnes pratiques implémentées :
+Séparation des responsabilités
+Encapsulation des données
+Héritage et abstraction
+Gestion centralisée des accès à la base de données
+Système de routage propre
+Sécurité :
+Gestion des sessions sécurisée
+Système de permissions avec restrictTo()
+Protection contre les injections SQL via le DAO
+Authentification centralisée
+Cette architecture permet :
+Une maintenance facile
+Une évolutivité du code
+Une réutilisation des composants
+Une séparation claire des responsabilités
+Une sécurité renforcée
