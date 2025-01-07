@@ -49,10 +49,10 @@ class SecurityController extends AbstractController{
     public function login () {
         if (isset($_POST["submit"])) {
             
-        $mail = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+        $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         
-            if ($mail && $password) {
+            if ($email && $password) {
                 // $hash = ->getPassword();
                 // if (password_verify($password, $hash)) {
                 //     $_SESSION["user"] = ;
