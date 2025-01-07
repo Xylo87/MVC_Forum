@@ -77,9 +77,15 @@ final class Message extends Entity{
     /**
      * Get the value of dateMes
      */ 
-    public function getdateMes()
+    public function getDateMes()
     {
         return $this->dateMes;
+    }
+
+    public function getDateMesFr()
+    {
+        $dateFr = new \DateTime($this->dateMes);
+        return $dateFr->format("d-m-Y H:i");
     }
 
     /**
@@ -87,7 +93,7 @@ final class Message extends Entity{
      *
      * @return  self
      */ 
-    public function setdateMes($dateMes)
+    public function setDateMes($dateMes)
     {
         $this->dateMes = $dateMes;
 

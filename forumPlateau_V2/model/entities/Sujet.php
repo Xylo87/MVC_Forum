@@ -103,6 +103,11 @@ final class Sujet extends Entity{
         return $this->dateSuj;
     }
 
+    public function getDateSujFr() {
+        $dateFr = new \DateTime($this->dateSuj);
+        return $dateFr->format("d-m-Y H:i");
+    }
+
     /**
      * Set the value of dateSuj
      *

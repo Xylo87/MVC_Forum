@@ -13,4 +13,18 @@ class MessageManager extends Manager{
     public function __construct(){
         parent::connect();
     }
+
+
+    public function findMessagesByTopic($id) {
+
+        $sql = "SELECT *
+                FROM ".$this->tableName." m 
+                WHERE m.sujet_id = :id";
+    
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return  $this->getMultipleResults(
+            DAO::select($sql, ['id' => $id]), 
+            $this->className
+        );
+    }
 }

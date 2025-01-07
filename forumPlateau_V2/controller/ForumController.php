@@ -6,6 +6,7 @@ use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\CategorieManager;
 use Model\Managers\SujetManager;
+use Model\Managers\MessageManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
@@ -14,7 +15,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         // créer une nouvelle instance de CategoryManager
         $categoryManager = new CategorieManager();
         // récupérer la liste de toutes les catégories grâce à la méthode findAll de Manager.php (triés par nom)
-        $categories = $categoryManager->findAll(["nom", "DESC"]);
+        $categories = $categoryManager->findAll(["nom", "ASC"]);
 
         // le controller communique avec la vue "listCategories" (view) pour lui envoyer la liste des catégories (data)
         return [
@@ -39,6 +40,24 @@ class ForumController extends AbstractController implements ControllerInterface{
             "data" => [
                 "category" => $category,
                 "topics" => $topics
+            ]
+        ];
+    }
+
+    // listMessageBySujet
+    public function listMessagesBySujet($id) {
+
+        $messageManager = new MessageManager();
+        $topicManager = new SujetManager();
+        $topic = $topicManager->findOneById($id);
+        $messages = $messageManager->findMessagesByTopic($id);
+
+        return [
+            "view" => VIEW_DIR."forum/listMessages.php",
+            "meta_description" => "Liste des messages par sujet : ".$topic,
+            "data" => [
+                "topic" => $topic,
+                "messages" => $messages
             ]
         ];
     }
