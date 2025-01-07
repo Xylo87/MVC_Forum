@@ -19,7 +19,8 @@ class MessageManager extends Manager{
 
         $sql = "SELECT *
                 FROM ".$this->tableName." m 
-                WHERE m.sujet_id = :id";
+                WHERE m.sujet_id = :id
+                ORDER BY m.dateMes";
     
         // la requête renvoie plusieurs enregistrements --> getMultipleResults
         return  $this->getMultipleResults(

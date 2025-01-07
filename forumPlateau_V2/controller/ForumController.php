@@ -61,4 +61,53 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
+    public function addMessage(int $id) {
+        $messageManager = new MessageManager();
+        $message = filter_input(INPUT_POST, "post", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if($message) {
+            $messageManager->add(
+                [
+                    "texte" => $message,
+                    "utilisateur_id" => 1,
+                    "sujet_id" => $id
+                ]
+            );
+
+            $this->redirectTo("forum", "listMessagesBySujet", $id);
+        }
+
+    }
+
+    public function addTopic(int $id) {
+        $topicManager = new SujetManager();
+        $topic = filter_input(INPUT_POST, "topic", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if ($topic) {
+            $topicId = $topicManager->add(
+                [
+                    "titre" => $topic,
+                    "utilisateur_id" => 2,
+                    "categorie_id" => $id
+                ]
+            );
+        
+        }
+        
+        $messageManager = new MessageManager();
+        $message = filter_input(INPUT_POST, "post", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    
+        if($message) {
+            $messageManager->add(
+                [
+                    "texte" => $message,
+                    "utilisateur_id" => 3,
+                    "sujet_id" => $topicId
+                ]
+            );
+
+            $this->redirectTo("forum", "listTopicsByCategory", $id);
+        }
+    }
 }
