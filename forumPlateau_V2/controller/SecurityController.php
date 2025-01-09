@@ -25,8 +25,9 @@ class SecurityController extends AbstractController{
                 
                 // vérif si utilisateur existe déjà
                 $user = $utilisateurManager->findUserByMail($mail);
+                $user2 = $utilisateurManager->findUserByNickname($pseudo);
                 
-                if ($user) {
+                if ($user || $user2) {
                 } else {
                     if ($pass1 === $pass2 && strlen($pass1) >= 5) {
                         $utilisateurManager->add(
@@ -44,9 +45,6 @@ class SecurityController extends AbstractController{
         return [
             "view" => VIEW_DIR."register.php",
             "meta_description" => "Register",
-            // "data" => [ 
-                
-            // ]
         ]; 
         } 
         
@@ -81,6 +79,17 @@ class SecurityController extends AbstractController{
         public function logout () {
             unset($_SESSION["user"]);
             $this->redirectTo("home", "index");
+        }
+
+        public function profile(){
+        
+            return [
+                "view" => VIEW_DIR."profile.php",
+                "meta_description" => "Profil utilisateur",
+                // "data" => [ 
+                    
+                // ]
+            ];
         }
     }
 

@@ -1,9 +1,11 @@
 <?php
     $topic = $result["data"]['topic']; 
-    $messages = $result["data"]['messages']; 
+    $messages = $result["data"]['messages'];
+    $category = $result["data"]['category'];
 ?>
 
 <h1><?= $topic ?></h1>
+<p>(<a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">Retour à la liste des sujets de <?= $category ?></a>)</p>
 <br>
 
 <?php

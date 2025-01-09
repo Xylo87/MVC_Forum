@@ -7,7 +7,6 @@ use App\ControllerInterface;
 use Model\Managers\CategorieManager;
 use Model\Managers\SujetManager;
 use Model\Managers\MessageManager;
-use Model\Managers\UtilisateurManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
@@ -50,29 +49,30 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $messageManager = new MessageManager();
         $topicManager = new SujetManager();
+        $categoryManager = new CategorieManager();
         $topic = $topicManager->findOneById($id);
         $messages = $messageManager->findMessagesByTopic($id);
+        $category = $categoryManager->findOneById($topic->getCategorie()->getId());
 
         return [
             "view" => VIEW_DIR."forum/listMessages.php",
             "meta_description" => "Liste des messages par sujet : ".$topic,
             "data" => [
                 "topic" => $topic,
-                "messages" => $messages
+                "messages" => $messages,
+                "category" => $category
             ]
         ];
     }
 
     public function addMessage(int $id) {
-        $utilisateurManager = new UtilisateurManager();
         $messageManager = new MessageManager();
         $message = filter_input(INPUT_POST, "post", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
         if($message) {
             $messageManager->add(
                 [
                     "texte" => $message,
-                    "utilisateur_id" => 1,
+                    "utilisateur_id" => Session::getUser()->getId(),
                     "sujet_id" => $id
                 ]
             );
@@ -90,7 +90,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             $topicId = $topicManager->add(
                 [
                     "titre" => $topic,
-                    "utilisateur_id" => 2,
+                    "utilisateur_id" => Session::getUser()->getId(),
                     "categorie_id" => $id
                 ]
             );
@@ -104,7 +104,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             $messageManager->add(
                 [
                     "texte" => $message,
-                    "utilisateur_id" => 3,
+                    "utilisateur_id" => Session::getUser()->getId(),
                     "sujet_id" => $topicId
                 ]
             );

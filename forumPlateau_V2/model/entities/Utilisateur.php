@@ -127,6 +127,12 @@ final class Utilisateur extends Entity{
         return $this->dateCrea;
     }
 
+    public function getDateCreaFr()
+    {
+        $dateFr = new \DateTime($this->dateCrea);
+        return $dateFr->format("d-m-Y à H:i");
+    }
+
     /**
      * Set the value of dateCrea
      *

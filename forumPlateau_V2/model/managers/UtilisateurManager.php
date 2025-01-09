@@ -25,4 +25,16 @@ class UtilisateurManager extends Manager{
             $this->className
         );
     }
+
+    public function findUserByNickname($pseudo) {
+
+        $sql = "SELECT *
+                FROM ".$this->tableName." u
+                WHERE u.pseudo = :pseudo";
+
+        return $this->getOneOrNullResult(
+            DAO::select($sql, ['pseudo' => $pseudo], false), 
+            $this->className
+        );
+    }
 }
