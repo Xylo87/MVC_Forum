@@ -15,27 +15,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Listage de la structure de la base pour forum_theo
+-- Listage de la structure de la base pour forum
 CREATE DATABASE IF NOT EXISTS `forum` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `forum`;
 
--- Listage de la structure de table forum_theo. categorie
+-- Listage de la structure de table forum. categorie
 CREATE TABLE IF NOT EXISTS `categorie` (
   `id_categorie` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_categorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_theo.categorie : ~0 rows (environ)
-DELETE FROM `categorie`;
+-- Listage des données de la table forum.categorie : ~3 rows (environ)
 INSERT INTO `categorie` (`id_categorie`, `nom`) VALUES
 	(1, 'Discussions Générales'),
 	(2, 'Support Technique & Matériel'),
 	(3, 'Trading & Collection');
 
--- Listage de la structure de table forum_theo. message
+-- Listage de la structure de table forum. message
 CREATE TABLE IF NOT EXISTS `message` (
-  `id_message` int NOT NULL,
+  `id_message` int NOT NULL AUTO_INCREMENT,
   `texte` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `dateMes` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `utilisateur_id` int DEFAULT NULL,
@@ -45,10 +44,9 @@ CREATE TABLE IF NOT EXISTS `message` (
   KEY `sujet_id` (`sujet_id`),
   CONSTRAINT `FK_message_sujet` FOREIGN KEY (`sujet_id`) REFERENCES `sujet` (`id_sujet`),
   CONSTRAINT `FK_message_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_theo.message : ~0 rows (environ)
-DELETE FROM `message`;
+-- Listage des données de la table forum.message : ~30 rows (environ)
 INSERT INTO `message` (`id_message`, `texte`, `dateMes`, `utilisateur_id`, `sujet_id`) VALUES
 	(1, 'La Neo Geo AES reste pour moi la plus belle console jamais créée. Son design est intemporel. La qualité des matériaux est exceptionnelle. Les manettes sont parfaites. Je ne m\'en lasserai jamais.', '2023-12-24 14:30:00', 1, 1),
 	(2, 'La Dreamcast est bien plus élégante ! Son design blanc épuré était en avance sur son temps. Le VMU était révolutionnaire. Et ce logo en spirale reste iconique.', '2023-12-24 14:45:00', 4, 1),
@@ -81,7 +79,7 @@ INSERT INTO `message` (`id_message`, `texte`, `dateMes`, `utilisateur_id`, `suje
 	(29, 'Isopropanol à 90% pour les contacts. Eau savonneuse pour les coques. Démontage complet conseillé.', '2023-12-15 21:30:00', 10, 10),
 	(30, 'N\'oubliez pas de lubrifier les axes des sticks analogiques. Un peu de graisse silicone fait des merveilles.', '2023-12-15 21:45:00', 1, 10);
 
--- Listage de la structure de table forum_theo. sujet
+-- Listage de la structure de table forum. sujet
 CREATE TABLE IF NOT EXISTS `sujet` (
   `id_sujet` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -94,10 +92,9 @@ CREATE TABLE IF NOT EXISTS `sujet` (
   KEY `sujet_id` (`utilisateur_id`) USING BTREE,
   CONSTRAINT `FK_sujet_categorie` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id_categorie`),
   CONSTRAINT `FK_sujet_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_theo.sujet : ~0 rows (environ)
-DELETE FROM `sujet`;
+-- Listage des données de la table forum.sujet : ~10 rows (environ)
 INSERT INTO `sujet` (`id_sujet`, `titre`, `lock`, `dateSuj`, `categorie_id`, `utilisateur_id`) VALUES
 	(1, 'La plus belle console rétro ?', 1, '2023-12-24 14:30:00', 1, 1),
 	(2, 'Vos souvenirs de première partie', 0, '2023-12-23 10:15:00', 1, 9),
@@ -110,19 +107,18 @@ INSERT INTO `sujet` (`id_sujet`, `titre`, `lock`, `dateSuj`, `categorie_id`, `ut
 	(9, 'Collection Virtual Boy', 0, '2023-12-16 19:20:00', 3, 8),
 	(10, 'Nettoyage manettes anciennes', 0, '2023-12-15 21:15:00', 2, 4);
 
--- Listage de la structure de table forum_theo. utilisateur
+-- Listage de la structure de table forum. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id_utilisateur` int NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'Membre',
   `mail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `dateCrea` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_theo.utilisateur : ~0 rows (environ)
-DELETE FROM `utilisateur`;
+-- Listage des données de la table forum.utilisateur : ~11 rows (environ)
 INSERT INTO `utilisateur` (`id_utilisateur`, `pseudo`, `password`, `role`, `mail`, `dateCrea`) VALUES
 	(1, 'RetroKing88', 'Rk88#2023!', 'Administrateur', 'retroking88@gmail.com', '2023-01-12 00:00:00'),
 	(2, 'PixelMaster', 'Px3lM@st3r', 'Modérateur', 'pixelmaster@yahoo.com', '2023-01-15 00:00:00'),
@@ -133,7 +129,8 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `pseudo`, `password`, `role`, `mail
 	(7, 'PCEnginePro', 'TurboGrafx16!', 'Membre', 'pcengine@gmail.com', '2023-02-10 00:00:00'),
 	(8, 'AtariLegend', 'Pong1972#', 'Modérateur', 'atarilegend@outlook.com', '2023-02-15 00:00:00'),
 	(9, 'GameBoyMaster', 'Tetris1989!', 'Membre', 'gbmaster@gmail.com', '2023-02-20 00:00:00'),
-	(10, 'VintageGamer', 'Vintage#2023', 'Membre', 'vintagegamer@yahoo.com', '2023-02-25 00:00:00');
+	(10, 'VintageGamer', 'Vintage#2023', 'Membre', 'vintagegamer@yahoo.com', '2023-02-25 00:00:00'),
+	(11, 'Xylo', '$2y$10$ncFXi1OtKeZPprF5YGMgeen7l/IWoRcvRmBknCH/z5ExjkjUfT/Oa', 'Membre', 'xylo@exemple.com', '2025-01-09 19:52:51');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
