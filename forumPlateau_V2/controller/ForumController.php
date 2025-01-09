@@ -7,6 +7,7 @@ use App\ControllerInterface;
 use Model\Managers\CategorieManager;
 use Model\Managers\SujetManager;
 use Model\Managers\MessageManager;
+use Model\Managers\UtilisateurManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
@@ -63,6 +64,7 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
     public function addMessage(int $id) {
+        $utilisateurManager = new UtilisateurManager();
         $messageManager = new MessageManager();
         $message = filter_input(INPUT_POST, "post", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 

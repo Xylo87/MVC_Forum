@@ -3,8 +3,8 @@
     <label for="pseudo">Pseudo</label>
     <input type="text" name="pseudo" id="pseudo"><br>
 
-    <label for="email">Mail</label>
-    <input type="email" name="email" id="email"><br>
+    <label for="mail">Mail</label>
+    <input type="email" name="mail" id="mail"><br>
 
     <label for="pass1">Mot de passe</label>
     <input type="password" name="pass1" id="pass1"><br>

@@ -20,11 +20,6 @@
                     <nav>
                         <div id="nav-left">
                             <a href="/">Accueil</a>
-                            <?php
-                            if(App\Session::isAdmin()){
-                                ?>
-                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                            <?php } ?>
                         </div>
                         <div id="nav-right">
                         <?php
@@ -39,7 +34,6 @@
                                 ?>
                                 <a href="index.php?ctrl=security&action=login">Connexion</a>
                                 <a href="index.php?ctrl=security&action=register">Inscription</a>
-                                <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
                             <?php
                             }
                         ?>
