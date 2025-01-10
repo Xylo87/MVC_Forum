@@ -28,4 +28,22 @@ class SujetManager extends Manager{
             $this->className
         );
     }
+
+    public function lockSwitch($id) {
+
+        $sql = "UPDATE ".$this->tableName." s
+        SET s.lock = 1
+        WHERE s.id_sujet = :id";
+
+        DAO::update($sql, ["id" => $id]);
+    }
+
+    public function unlockSwitch($id) {
+
+        $sql = "UPDATE ".$this->tableName." s
+        SET s.lock = 0
+        WHERE s.id_sujet = :id";
+
+        DAO::update($sql, ["id" => $id]);
+    }
 }

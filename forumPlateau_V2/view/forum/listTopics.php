@@ -14,9 +14,9 @@ foreach($topics as $topic ){ ?>
 <?php } ?>
 
 <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId() ?>" method="post">
-    <input type="text" name="topic" placeholder="Nouveau sujet" size="41">
+    <input type="text" name="topic" placeholder="Nouveau sujet" size="41" required>
     <br>
-    <textarea name="post" id="post" placeholder="Nouveau message" cols="40" rows="5"></textarea>
+    <textarea name="post" id="post" placeholder="Nouveau message" cols="40" rows="5" required></textarea>
     <br>
     <br>
     <input type="submit" name="submit" value="Post">

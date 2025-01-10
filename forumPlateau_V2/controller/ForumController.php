@@ -112,4 +112,16 @@ class ForumController extends AbstractController implements ControllerInterface{
             $this->redirectTo("forum", "listTopicsByCategory", $id);
         }
     }
+
+    public function lock(int $id) {
+        $topicManager = new SujetManager();
+        $topicManager->lockSwitch($id);
+        $this->redirectTo("forum", "listMessagesBySujet", $id);
+    }
+
+    public function unlock(int $id) {
+        $topicManager = new SujetManager();
+        $topicManager->unlockSwitch($id);
+        $this->redirectTo("forum", "listMessagesBySujet", $id);
+    }
 }

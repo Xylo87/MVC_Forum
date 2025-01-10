@@ -130,7 +130,7 @@ final class Utilisateur extends Entity{
     public function getDateCreaFr()
     {
         $dateFr = new \DateTime($this->dateCrea);
-        return $dateFr->format("d-m-Y à H:i");
+        return $dateFr->format("d/m/Y à H:i");
     }
 
     /**

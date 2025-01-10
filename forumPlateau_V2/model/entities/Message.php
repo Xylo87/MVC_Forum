@@ -85,7 +85,7 @@ final class Message extends Entity{
     public function getDateMesFr()
     {
         $dateFr = new \DateTime($this->dateMes);
-        return $dateFr->format("d-m-Y à H:i");
+        return $dateFr->format("d/m/Y à H:i");
     }
 
     /**
