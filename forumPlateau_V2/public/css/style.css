@@ -1,9 +1,134 @@
+@font-face {
+    font-family: "Star Shield";
+    src: local("Star Shield"), url("../css/fonts/Star_Shield.ttf"), format("truetype");
+    font-weight: 400;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-h1 {
-    color: rgb(0, 122, 156);
+body {
+    background: #0D1114;
+    color: rgb(227, 227, 227);
+    font-family: "Fira Sans";
+}
+
+a {
+    color: rgb(0, 102, 204);
+}
+
+nav {
+    height: 75px;
+    display: flex;
+}
+
+#nav-left {
+    width: 35%;
+    display: flex;
+    font-size: xx-large;
+    align-items: center;
+    gap: 25px;
+    padding: 10px 0 10px 25px;
+}
+
+#nav-left img {
+    transform: scaleX(-1);
+}
+
+#nav-left a, img {
+    height: 100%;
+}
+
+#nav-left h1 {
+    font-family: "Star Shield";
+}
+
+#nav-right {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+    
+}
+
+#search-bar {
+    display: flex;
+    width: 576px;
+    height: 36px;
+    background: #777777;
+    border-radius: 20px;
+    align-items: center;
+}
+
+#search-bar i {
+    margin: 0 10px 0 15px;
+}
+
+#search-bar p {
+    font-size: smaller;
+}
+
+#logs {
+    display: flex;
+    width: 33%;
+    justify-content: space-evenly;
+}
+
+#logs a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#logs a:hover {
+    text-decoration: underline;
+}
+
+#login, #register, #profilPic, #logout {
+    display: flex;
+    height: 75px;
+    align-items: center;
+    gap: 10px;
+}
+
+#login img {
+    max-height: 40%;
+}
+
+#register img {
+    max-height: 30%;
+}
+
+#logout img {
+    max-height: 35%;
+}
+
+.fa-user {
+    padding-bottom: 4px;
+}
+
+hr {
+    color: white;
+}
+
+#sidebar {
+    width: 14%;
+    min-height: 100vh;
+    border-right: solid 2px white;
+    font-size: larger;
+}
+
+.sideSection {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+}
+
+.locked {
+    color: black;
 }

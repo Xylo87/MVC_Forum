@@ -39,7 +39,7 @@ foreach($messages as $message){ ?>
 <!-- CHAMP TEXTE POST -->
 <form action="index.php?ctrl=forum&action=addMessage&id=<?= $topic->getId() ?>" method="post">
     <?php if ($topic->getLock() == 1) { ?>
-            <textarea name="post" id="post" placeholder="Sujet verouillé !" cols="40" rows="5" required disabled></textarea>
+            <textarea class="locked" name="post" id="post" placeholder="Sujet verouillé !" cols="40" rows="5" required disabled></textarea>
             <br>
             <br>
         <?php } else { ?>

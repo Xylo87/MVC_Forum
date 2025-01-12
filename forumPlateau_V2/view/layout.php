@@ -6,45 +6,64 @@
         <meta name="description" content="<?= $meta_description ?>">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
-        <title>FORUM</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="public/css/style.css">
+        <title>Retro Game Corner</title>
     </head>
     <body>
         <div id="wrapper"> 
-            <div id="mainpage">
-                <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
-                <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
-                <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
-                <header>
-                    <nav>
-                        <div id="nav-left">
-                            <a href="index.php?ctrl=home&action=index">Accueil</a>
+            <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
+            <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
+            <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
+            <header>
+                <nav>
+                    <div id="nav-left">
+                        <a href="index.php?ctrl=home&action=index">
+                            <img src="public/css/img/logo.png" alt="mister game and watch icon">
+                        </a>
+                        <h1>Retro Game Corner</h1>
+                    </div>
+                    <div id="nav-right">
+                        <div id="search-bar">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <p>Rechercher</p>
                         </div>
-                        <div id="nav-right">
-                        <?php
-                            // si l'utilisateur est connecté 
-                            if(App\Session::getUser()){
-                                ?>
-                                <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                                <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
-                                <?php
-                            }
-                            else{
-                                ?>
-                                <a href="index.php?ctrl=security&action=login">Connexion</a>
-                                <a href="index.php?ctrl=security&action=register">Inscription</a>
+                        <div id="logs">
                             <?php
-                            }
-                        ?>
+                            // si l'utilisateur est connecté 
+                            if(App\Session::getUser()){ ?>
+                            <div id="profilPic">
+                                <span class="fas fa-user"></span>
+                                <a href="index.php?ctrl=security&action=profile"><?= App\Session::getUser()?></a>
+                            </div>
+                            <div id="logout">
+                                <img src="public/css/img/door.png" alt="logout door icon">
+                                <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                            </div> 
+                            <?php }
+                            else { ?>
+                            <div id="login">
+                                <img src="public/css/img/key.png" alt="login key icon">
+                                <a href="index.php?ctrl=security&action=login">Connexion</a>
+                            </div>
+                            <div id="register">
+                                <img src="public/css/img/floppy.png" alt="register floppy icon">
+                                <a href="index.php?ctrl=security&action=register">Inscription</a>
+                            </div>
+                            <?php } ?>
                         </div>
-                    </nav>
-                </header>
+                    </div>
+                </nav>
+                <hr>
+            </header>
                 
-                <main id="forum">
-                    <?= $page ?>
-                </main>
-            </div>
+            <main>
+                <?= $page ?>
+            </main>
+
             <footer>
                 <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></p>
             </footer>
