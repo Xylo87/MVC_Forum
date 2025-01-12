@@ -6,7 +6,7 @@ use App\Session;
     <div class="sideSection">
         <a href="index.php?ctrl=home&action=index"><p>Acceuil</p></a>
         <p>Populaires</p>
-        <a href="index.php?ctrl=forum&action=index">Catégories</a>  
+        <a href="index.php?ctrl=forum&action=index"><p>Catégories</p></a>
     </div>
     <hr class="cutSection">
     <div class="sideSection">
