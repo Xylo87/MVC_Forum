@@ -17,8 +17,10 @@ body {
     font-family: "Fira Sans";
 }
 
-a {
-    color: rgb(0, 102, 204);
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 nav {
@@ -115,18 +117,57 @@ hr {
     color: white;
 }
 
-#sidebar {
-    width: 14%;
-    min-height: 100vh;
-    border-right: solid 2px white;
-    font-size: larger;
+main {
+    display: flex;
+    flex-grow: 1;
 }
 
-.sideSection {
+#sidebar {
+    width: 14%;
+    border-right: solid 2px white;
+    font-size: larger;
+    padding: 15px 0 15px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sideHome {
+    display: flex;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.sideSection, footer {
     display: flex;
     flex-direction: column;
     padding: 15px;
-    gap: 15px;
+    gap: 20px;
+}
+
+.cutSection {
+    width: 75%;
+}
+
+footer {
+    margin-top: auto;
+}
+
+#content {
+    background: #AE531B;
+    flex-grow: 1;
+}
+
+.navElement {
+    display: flex;
+}
+
+a {
+    color: rgb(0, 102, 204);
+}
+
+.none {
+    flex: none;
 }
 
 .locked {

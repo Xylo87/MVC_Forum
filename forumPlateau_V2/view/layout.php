@@ -63,10 +63,6 @@
             <main>
                 <?= $page ?>
             </main>
-
-            <footer>
-                <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></p>
-            </footer>
         </div>
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
