@@ -26,10 +26,13 @@ class SecurityController extends AbstractController{
                 // vérif si utilisateur existe déjà
                 $user = $utilisateurManager->findUserByMail($mail);
                 $user2 = $utilisateurManager->findUserByNickname($pseudo);
+
+                // REGEX
+                $regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/";
                 
                 if ($user || $user2) {
                 } else {
-                    if ($pass1 === $pass2 && strlen($pass1) >= 5) {
+                    if ($pass1 === $pass2 && preg_match($regex, $pass2)) {
                         $utilisateurManager->add(
                             [
                                 "pseudo" => $pseudo,

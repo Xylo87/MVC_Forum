@@ -17,6 +17,10 @@ body {
     font-family: "Fira Sans";
 }
 
+a {
+    color: rgb(0, 102, 204);
+}
+
 #wrapper {
     display: flex;
     flex-direction: column;
@@ -34,7 +38,7 @@ nav {
     font-size: xx-large;
     align-items: center;
     gap: 25px;
-    padding: 10px 0 10px 25px;
+    padding: 10px 0 10px 28px;
 }
 
 #nav-left img {
@@ -126,7 +130,7 @@ main {
     width: 14%;
     border-right: solid 2px white;
     font-size: larger;
-    padding: 15px 0 15px 25px;
+    padding: 15px 0 15px 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -134,19 +138,30 @@ main {
 
 .sideHome {
     display: flex;
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 15px 0 30px 65px;
+    gap: 15px;
 }
 
 .sideSection, footer {
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding: 15px 0 15px 65px;
     gap: 20px;
 }
 
 .cutSection {
     width: 75%;
+    align-self: center;
+}
+
+.cutSectionEnd {
+    margin-left: -33px;
+    margin-right: 33px;
+}
+
+.navElement {
+    display: flex;
+    gap: 15px;
 }
 
 footer {
@@ -158,16 +173,13 @@ footer {
     flex-grow: 1;
 }
 
-.navElement {
-    display: flex;
-}
-
-a {
-    color: rgb(0, 102, 204);
+ul {
+    margin: 0 0 10px 15px;
 }
 
 .none {
     flex: none;
+    margin: 25px;
 }
 
 .locked {

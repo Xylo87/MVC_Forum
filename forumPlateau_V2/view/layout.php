@@ -61,6 +61,48 @@
             </header>
                 
             <main>
+                <div id="sidebar">
+                    <div class="sideHome">
+                        <i class="fa-solid fa-house"></i>
+                        <a href="index.php?ctrl=home&action=index"><p>Accueil</p></a>
+                    </div>
+                    <div class="sideSection">
+                        <div class="navElement">
+                            <i class="fa-solid fa-comments"></i>
+                            <p>Populaires</p>
+                        </div>
+                        <div class="navElement">
+                            <i class="fa-solid fa-bars"></i>
+                            <a href="index.php?ctrl=forum&action=index"><p>Catégories</p></a>
+                        </div>
+                    </div>
+                    <hr class="cutSection">
+                    <div class="sideSection">
+                        <div class="navElement">
+                            <i class="fa-solid fa-heart"></i>
+                            <p>Favoris</p>
+                        </div>
+                    </div>
+                    <hr class="cutSection">
+                    <div class="sideSection">
+                        <div class="navElement">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <p>Hot Topics</p>
+                        </div>
+                    </div>
+                    <footer>
+                    <hr class="cutSectionEnd">
+                        <div class="navElement">
+                            <i class="fa-solid fa-book"></i>
+                            <p><a href="#">Règlement</a></p>
+                        </div>
+                        <div class="navElement">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <p><a href="#">Mentions</a></p>
+                        </div>
+                        <p>&copy; <?= date_create("now")->format("Y") ?></p> 
+                    </footer>
+                </div>
                 <?= $page ?>
             </main>
         </div>

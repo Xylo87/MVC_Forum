@@ -19,9 +19,9 @@
     <!-- LOCK/UNLOCK -->
     <?php if ((Session::getUser() && Session::getUser()->getId() == $topic->getUtilisateur()->getId()) || (Session::getUser() && Session::getUser()->getRole() == "Administrateur")) { ?>
         <?php if ($topic->getLock() == 0) { ?>
-        <a href="index.php?ctrl=forum&action=lock&id=<?=$topic->getId()?>">Lock</a>
+        🔒 <a href="index.php?ctrl=forum&action=lock&id=<?=$topic->getId()?>">Lock</a>
         <?php } else { ?>
-        <a href="index.php?ctrl=forum&action=unlock&id=<?=$topic->getId()?>">Unlock</a>
+        🔓 <a href="index.php?ctrl=forum&action=unlock&id=<?=$topic->getId()?>">Unlock</a>
         <?php } ?>
     <?php } ?>
     <br>
@@ -37,6 +37,8 @@
     <?php } ?>
 
     <!-- CHAMP TEXTE POST -->
+    <br>
+    <br>
     <form action="index.php?ctrl=forum&action=addMessage&id=<?= $topic->getId() ?>" method="post">
         <?php if ($topic->getLock() == 1) { ?>
                 <textarea class="locked" name="post" id="post" placeholder="Sujet verouillé !" cols="40" rows="5" required disabled></textarea>
