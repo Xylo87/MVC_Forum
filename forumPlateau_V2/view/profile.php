@@ -11,6 +11,12 @@ use App\Session;
     <p><u>Email</u> : <?= SESSION::getUser()->getMail() ?></p>
     <p><u>Rôle</u> : <?= SESSION::getUser()->getRole() ?></p>
     <p><u>Date de création du compte</u> : <?= SESSION::getUser()->getDateCreaFr() ?></p>
+    <br>
+    <br>
+    <?php
+        if (Session::getUser() && Session::getUser()->getRole() == "Administrateur") { ?>
+            <a href="index.php?ctrl=security&action=users">Afficher la liste des utilisateurs</a>
+    <?php } ?>
 </div>
 
 

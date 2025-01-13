@@ -1,6 +1,25 @@
 <div class="none">
     <h1>Inscription</h1>
     <br>
+    <p>Le mot de passe doit contenir :</p>
+    <ul>
+        <li>
+            au moins 12 caractères
+        </li>
+        <li>
+            au moins une minuscule
+        </li>
+        <li>
+            au moins une majuscule
+        </li>
+        <li>
+            au moins un chiffre 
+        </li>
+        <li>
+            au moins un caractère spécial (@-$-!-%-*-?-&)
+        </li>
+    </ul>
+    <br>
     <form action="index.php?ctrl=security&action=register" method="post">
         <label for="pseudo">Pseudo :</label>
         <input type="text" name="pseudo" id="pseudo"><br>

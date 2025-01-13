@@ -1,5 +1,13 @@
 <?php
-    $users = $result["data"]["users"]; 
+    $users = $result["data"]["users"];
 ?>
 
-<h1>Liste des utilisateurs du forum</h1>
+<div class="none">
+    <h1>Liste des utilisateurs</h1>
+    <br>
+    <?php foreach ($users as $user) { 
+        echo $user->getPseudo()."<br>".
+        "<u>Email</u> : ".$user->getMail()."<br>".
+        "<u>Rôle</u> : ".$user->getRole()."<br><br>";
+    } ?>
+</div>

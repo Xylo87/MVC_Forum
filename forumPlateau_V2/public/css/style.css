@@ -59,7 +59,6 @@ nav {
     align-items: center;
     gap: 15px;
     justify-content: space-between;
-    
 }
 
 #search-bar {
@@ -149,6 +148,11 @@ main {
     gap: 20px;
 }
 
+.navElement {
+    display: flex;
+    gap: 15px;
+}
+
 .cutSection {
     width: 75%;
     align-self: center;
@@ -157,11 +161,6 @@ main {
 .cutSectionEnd {
     margin-left: -33px;
     margin-right: 33px;
-}
-
-.navElement {
-    display: flex;
-    gap: 15px;
 }
 
 footer {

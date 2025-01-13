@@ -28,4 +28,12 @@ class MessageManager extends Manager{
             $this->className
         );
     }
+
+    public function deleteMesSwitch($id) {
+
+        $sql = "DELETE FROM ".$this->tableName." d
+        WHERE d.id_message = :id";
+
+        DAO::delete($sql, ["id" => $id]);
+    }
 }

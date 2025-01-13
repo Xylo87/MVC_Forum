@@ -17,7 +17,7 @@
     <br>
 
     <!-- LOCK/UNLOCK -->
-    <?php if ((Session::getUser() && Session::getUser()->getId() == $topic->getUtilisateur()->getId()) || (Session::getUser() && Session::getUser()->getRole() == "Administrateur")) { ?>
+    <?php if ((Session::getUser() && Session::getUser()->getRole() == "Modérateur") || (Session::getUser() && Session::getUser()->getRole() == "Administrateur")) { ?>
         <?php if ($topic->getLock() == 0) { ?>
         🔒 <a href="index.php?ctrl=forum&action=lock&id=<?=$topic->getId()?>">Lock</a>
         <?php } else { ?>
@@ -32,6 +32,10 @@
     foreach($messages as $message){ ?>
         <p><?= $message ?></p>
         <small><?= $message->getUtilisateur()?> - <?= $message->getDateMesFr()?></small>
+        <?php if ((Session::getUser() && Session::getUser()->getId() == $message->getUtilisateur()->getId()) || (Session::getUser() && Session::getUser()->getRole() == "Modérateur") || (Session::getUser() && Session::getUser()->getRole() == "Administrateur")) { ?>
+        <br>
+        🗑️ <a href="index.php?ctrl=forum&action=deleteMes&id=<?= $message->getId() ?>">Delete</a>
+        <?php } ?>
         <br>
         <br>
     <?php } ?>
@@ -39,6 +43,8 @@
     <!-- CHAMP TEXTE POST -->
     <br>
     <br>
+    <?php 
+    if (Session::getUser()) { ?>
     <form action="index.php?ctrl=forum&action=addMessage&id=<?= $topic->getId() ?>" method="post">
         <?php if ($topic->getLock() == 1) { ?>
                 <textarea class="locked" name="post" id="post" placeholder="Sujet verouillé !" cols="40" rows="5" required disabled></textarea>
@@ -51,6 +57,17 @@
                 <input type="submit" name="submit" value="Post">
         <?php } ?>
     </form>
+    <?php } else { ?>
+    <form action="index.php?ctrl=forum&action=addMessage&id=<?= $topic->getId() ?>" method="post">
+        <?php if ($topic->getLock() == 1) { ?>
+                <textarea class="locked" name="post" id="post" placeholder="Sujet verouillé !" cols="40" rows="5" required disabled></textarea>
+                <br>
+                <br>
+            <?php } else { ?>
+                <textarea class="locked" name="post" id="post" placeholder="Réservé aux membres !" cols="40" rows="5" required disabled></textarea>
+        <?php } ?>
+    </form>
+    <?php } ?>
 </div>
 
 
