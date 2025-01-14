@@ -91,19 +91,6 @@ class SecurityController extends AbstractController{
                 "meta_description" => "Profil utilisateur",
             ];
         }
-
-        public function users() {
-            $utilisateurManager = new UtilisateurManager();
-            $users = $utilisateurManager->findAll(["pseudo", "ASC"]);
-
-            return [
-                "view" => VIEW_DIR."users.php",
-                "meta_description" => "Liste des utilisateurs",
-                "data" => [
-                    "users" => $users
-                ]
-            ];
-        }
     }
 
                 

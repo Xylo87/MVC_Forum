@@ -8,6 +8,7 @@
     <?php foreach ($users as $user) { 
         echo $user->getPseudo()."<br>".
         "<u>Email</u> : ".$user->getMail()."<br>".
-        "<u>Rôle</u> : ".$user->getRole()."<br><br>";
+        "<u>Rôle</u> : ".$user->getRole()."<br>".
+        "<u>Date de création du compte</u> : ".$user->getDateCreaFr()."<br><br>";
     } ?>
 </div>

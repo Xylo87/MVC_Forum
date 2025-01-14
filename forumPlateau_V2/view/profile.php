@@ -15,7 +15,7 @@ use App\Session;
     <br>
     <?php
         if (Session::getUser() && Session::getUser()->getRole() == "Administrateur") { ?>
-            <a href="index.php?ctrl=security&action=users">Afficher la liste des utilisateurs</a>
+            <a href="index.php?ctrl=home&action=users">Afficher la liste des utilisateurs</a>
     <?php } ?>
 </div>
 

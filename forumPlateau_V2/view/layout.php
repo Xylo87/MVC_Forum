@@ -94,11 +94,11 @@
                     <hr class="cutSectionEnd">
                         <div class="navElement">
                             <i class="fa-solid fa-book"></i>
-                            <p><a href="#">Règlement</a></p>
+                            <p>Règlement</p>
                         </div>
                         <div class="navElement">
                             <i class="fa-solid fa-scale-balanced"></i>
-                            <p><a href="#">Mentions</a></p>
+                            <p>Mentions</p>
                         </div>
                         <p>&copy; <?= date_create("now")->format("Y") ?></p> 
                     </footer>

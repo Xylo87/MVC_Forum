@@ -168,8 +168,107 @@ footer {
 }
 
 #content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     background: #AE531B;
     flex-grow: 1;
+}
+
+#content h2 {
+    font-size: 300%;
+    font-weight: 600;
+    margin-top: 25px;
+}
+
+#topicContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 700px;
+    gap: 10px;
+}
+
+.topicDate {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    color: white;
+    width: 80%;
+    height: 600px;
+}
+
+.topicDate p {
+    margin-bottom: 5px;
+    font-size: large;
+}
+
+.topic {
+    display: flex;
+    background: black;
+    width: 100%;
+    height: 175px;
+    border: solid 2px white;
+    text-decoration: none;
+    color: inherit;
+}
+
+.topic:hover {
+    border: solid 2px red;
+} 
+
+.topic img {
+    height: 90%;
+}
+
+.topicLeft {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    padding-left: 100px;
+}
+
+.topicLeftContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.topicLeftContent p {
+    font-weight: 100;
+}
+
+.signature {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.signature h3 {
+    font-size: 200%;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.signature small {
+    align-self: flex-end;
+    font-size: 100%;
+    font-weight: 200;
+}
+
+.topicRight {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-circle-arrow-down {
+    font-size: 250%;
+    color:black;
+    margin-bottom: 10px;
 }
 
 ul {
@@ -184,3 +283,4 @@ ul {
 .locked {
     color: black;
 }
+

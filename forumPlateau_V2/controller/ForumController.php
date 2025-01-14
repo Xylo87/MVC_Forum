@@ -114,55 +114,31 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
     public function lock(int $id) {
-        if (!(Session::getUser() && Session::getUser()->getRole() == "Modérateur") || (Session::getUser() && Session::getUser()->getRole() == "Administrateur")) {
-            die;
-        } else {
+        $this->restrictTo("Modérateur", "Administrateur");
         $topicManager = new SujetManager();
         $topicManager->lockSwitch($id);
         $this->redirectTo("forum", "listMessagesBySujet", $id);
-        }
     }
 
     public function unlock(int $id) {
-        if (!(Session::getUser() && Session::getUser()->getRole() == "Modérateur") || (Session::getUser() && Session::getUser()->getRole() == "Administrateur")) {
-            die;
-        } else {
+        $this->restrictTo("Modérateur", "Administrateur");
         $topicManager = new SujetManager();
         $topicManager->unlockSwitch($id);
         $this->redirectTo("forum", "listMessagesBySujet", $id);
-        }
     }
 
     public function deleteMes(int $id) {
-        if (!(Session::getUser() && Session::getUser()->getRole() == "Modérateur") || (Session::getUser() && Session::getUser()->getRole() == "Administrateur")) {
-            die;
-        } else {
+        
         $messageManager = new MessageManager();
 
         // Stocker l'ID du sujet du message pour redirection
         $message = $messageManager->findOneById($id);
         $sujetId = $message->getSujet()->getId();
 
+        $this->restrictTo("Modérateur", "Administrateur", $message->getUtilisateur());
+
         // Suppression
         $messageManager->deleteMesSwitch($id);
         $this->redirectTo("forum", "listMessagesBySujet", $sujetId);
-        }
     }
 }
-
-    // ALTERNATIVE
-    // public function deleteMes(int $id) {
-    //     if ((Session::getUser() && Session::getUser()->getRole() == "Modérateur") || (Session::getUser() && Session::getUser()->getRole() == "Administrateur")) {
-    //         $messageManager = new MessageManager();
-
-    //     // Stocker l'ID du sujet du message pour redirection
-    //     $message = $messageManager->findOneById($id);
-    //     $sujetId = $message->getSujet()->getId();
-
-    //     // Suppression
-    //     $messageManager->deleteMesSwitch($id);
-    //     $this->redirectTo("forum", "listMessagesBySujet", $sujetId);
-    //     } else {
-    //         die;
-    //     }
-    // }
