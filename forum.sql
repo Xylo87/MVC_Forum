@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   KEY `sujet_id` (`sujet_id`),
   CONSTRAINT `FK_message_sujet` FOREIGN KEY (`sujet_id`) REFERENCES `sujet` (`id_sujet`),
   CONSTRAINT `FK_message_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table forum.message : ~30 rows (environ)
 INSERT INTO `message` (`id_message`, `texte`, `dateMes`, `utilisateur_id`, `sujet_id`) VALUES
@@ -92,13 +92,13 @@ CREATE TABLE IF NOT EXISTS `sujet` (
   KEY `sujet_id` (`utilisateur_id`) USING BTREE,
   CONSTRAINT `FK_sujet_categorie` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id_categorie`),
   CONSTRAINT `FK_sujet_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table forum.sujet : ~10 rows (environ)
 INSERT INTO `sujet` (`id_sujet`, `titre`, `lock`, `dateSuj`, `categorie_id`, `utilisateur_id`) VALUES
-	(1, 'La plus belle console rétro ?', 0, '2023-12-24 14:30:00', 1, 1),
+	(1, 'La plus belle console rétro ?', 1, '2023-12-24 14:30:00', 1, 1),
 	(2, 'Vos souvenirs de première partie', 0, '2023-12-23 10:15:00', 1, 9),
-	(3, 'Problème avec ma Master System', 0, '2023-12-22 16:45:00', 2, 7),
+	(3, 'Problème avec ma Master System', 1, '2023-12-22 16:45:00', 2, 7),
 	(4, 'Restauration Neo Geo Pocket', 0, '2023-12-21 09:30:00', 2, 10),
 	(5, 'Votre meilleure trouvaille en brocante', 0, '2023-12-20 15:20:00', 3, 6),
 	(6, 'Prix du marché Dreamcast', 0, '2023-12-19 11:10:00', 3, 5),
@@ -116,9 +116,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `mail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `dateCrea` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum.utilisateur : ~12 rows (environ)
+-- Listage des données de la table forum.utilisateur : ~13 rows (environ)
 INSERT INTO `utilisateur` (`id_utilisateur`, `pseudo`, `password`, `role`, `mail`, `dateCrea`) VALUES
 	(1, 'RetroKing88', 'Rk88#2023!', 'Administrateur', 'retroking88@gmail.com', '2023-01-12 00:00:00'),
 	(2, 'PixelMaster', 'Px3lM@st3r', 'Modérateur', 'pixelmaster@yahoo.com', '2023-01-15 00:00:00'),
@@ -130,8 +130,9 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `pseudo`, `password`, `role`, `mail
 	(8, 'AtariLegend', 'Pong1972#', 'Modérateur', 'atarilegend@outlook.com', '2023-02-15 00:00:00'),
 	(9, 'GameBoyMaster', 'Tetris1989!', 'Membre', 'gbmaster@gmail.com', '2023-02-20 00:00:00'),
 	(10, 'VintageGamer', 'Vintage#2023', 'Membre', 'vintagegamer@yahoo.com', '2023-02-25 00:00:00'),
-	(11, 'Xylo', '$2y$10$ncFXi1OtKeZPprF5YGMgeen7l/IWoRcvRmBknCH/z5ExjkjUfT/Oa', 'Membre', 'xylo@exemple.com', '2025-01-09 19:52:51'),
-	(13, 'Rez', '$2y$10$GA0dUHf8WRz2ArFu4pJKDOlA/mrjSps1.TvavyW633qqufUN0U2tK', 'Administrateur', 'rez@exemple.com', '2025-01-10 16:25:53');
+	(13, 'Rez', '$2y$10$GA0dUHf8WRz2ArFu4pJKDOlA/mrjSps1.TvavyW633qqufUN0U2tK', 'Administrateur', 'rez@exemple.com', '2025-01-10 16:25:53'),
+	(14, 'Kiouze', '$2y$10$vhCC6y6DAnMUtP/Mb75O1OdNxx6hqessQrRXTHwKS.T1wm4A1tn02', 'Modérateur', 'kiouze@hotmail.fr', '2025-01-13 18:38:34'),
+	(15, 'Xylo', '$2y$10$NvzqKV8PhDiKrFaiGXQ8QuQF312rmgYyU1fI38Qi6S9oIj1PtHaae', 'Membre', 'xylo@exemple.com', '2025-01-13 20:42:53');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
