@@ -61,6 +61,7 @@ Ces fonctions sont sécurisées avec une méthode RestrictTo() qui empêche de l
 ## 4. Améliorations possibles
 - Ajout de **messages flash** en `$_SESSION` via des méthodes dédiées au sein du **Framework**, lors de la réussite ou de l'échec de l'utilisation de certaines fonctionnalités (**register**, **login** etc.).
 - Ajout de style sur les différentes **vues**, autres que la **HomePage**.
+- Ajout d'un design **Responsive** sur l'ensemble des **vues** à destination des utilisateurs **Mobile**.
 
 ---
 
